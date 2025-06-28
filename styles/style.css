@@ -53,17 +53,66 @@ header {
   z-index: 100;
 }
 
+/* =========================
+    RESPONSIVENESS & nav bar
+========================== */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  /* Sleek gradient background */
   background: linear-gradient(90deg, #007BFF, #FF6600);
   padding: 0.5rem 1.5rem;
-
   box-shadow: 0px 4px 15px rgba(0, 123, 255, 0.2);
+  position: relative;
 }
+
+nav ul {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+}
+
+nav ul li a {
+  color: #fff;
+  font-weight: 650;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--bg-color, #fff);
+    width: 100px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    z-index: 9999;
+    border-radius: 12px;
+  }
+
+  nav ul li a {
+  color: #333;
+  font-weight: 650;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
 
 .logo {
   font-size: 1.25rem;
@@ -103,13 +152,13 @@ nav a.active::after {
   transform: scaleX(1);
   transform-origin: left;
 }
-
+/*
 .menu-toggle {
   font-size: 1.5rem;
   color: #fff;
   cursor: pointer;
   display: none;
-}
+} */
 
 /* =========================
     SECTIONS
@@ -289,12 +338,6 @@ footer.fade-in {
 }
 
 /* =========================
-    PROJECTS PAGE
-========================== */
-/* =========================
-    PROJECTS PAGE - STACKED & POP
-========================== */
-/* =========================
     PROJECTS PAGE - SLIDE IN
 ========================== */
 .projects-grid {
@@ -430,30 +473,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* =========================
-    RESPONSIVENESS
-========================== */
-@media (max-width: 768px) {
-  nav ul {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 56px;
-    right: 20px;
-    background: var(--bg-color);
-    padding: 1rem;
-    border-radius: 4px;
-    border: 1px solid #eee;
-  }
 
-  .menu-toggle {
-    display: block;
-  }
-
-  .project-list {
-    flex-direction: column;
-  }
-}
 
 /* =========================
     ANIMATION KEYFRAMES
@@ -565,8 +585,77 @@ footer {
     align-items: center;
   }
   .side-contact {
-    flex: unset;
+    flex: auto;
     align-items: center;
     margin: 1rem 0;
+  }
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+   ========================== */
+@media (max-width: 600px) {
+  /* GENERAL LAYOUT ADJUSTMENTS */
+  body {
+    font-size: 0.9rem;
+  }
+
+  .content-wrapper {
+    padding: 1rem;
+  }
+
+  /* INTRO SECTION */
+  .intro-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .intro-text h1 {
+    font-size: 2rem;
+  }
+  .intro-image {
+    flex: none;
+    margin-top: 1rem;
+  }
+  .intro-image img {
+    width: 180px;
+    height: 180px;
+  }
+
+  /* NAVIGATION ADJUSTMENTS */
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* CONTACT PAGE SECTIONS SIDE-BY-SIDE -> STACK ON MOBILE */
+  .content-wrapper,
+  .contact-details,
+  .card.contact-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin: 0.5rem auto;
+  }
+
+  /* SOCIAL ICONS */
+  .social-icons {
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .social-icons a svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* PROJECTS PAGE ADJUSTMENTS */
+  .projects-grid {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .project-card {
+    padding: 1rem;
+    font-size: 0.95rem;
   }
 }
